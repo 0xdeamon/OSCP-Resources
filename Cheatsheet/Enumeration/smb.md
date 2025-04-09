@@ -10,6 +10,18 @@
 
 `smbcleint //IP/SHARE_NAME`
 
+## Using netexec
+
+`netexec smb IP -u 'user' -p 'pass' --shares`
+
+`netexec smb IP -u 'user' -p 'pass' --users`
+
+`netexec smb IP -u 'user' -p 'pass' --groups`
+
+`netexec smb IP -u 'user' -p 'pass' --loggedon-users`
+
+`netexec smb IP -u 'user' -p 'pass' -M spider_plus --share 'Share_name' `
+
 ## Using Smbmap
 
 `smbmap -H IP`
