@@ -1,47 +1,86 @@
-# SMB Enumeration
+ENUMERATING EVERTHING
 
-## Using Enum4linix/Enum4linux-ng
+```bash
+enum4linux-ng IP
+```
 
-`enum4linux-ng IP`
+CONNECTING TO SMB SERVER AND LISTING THE SHARES
 
-## Using Smbclient
+```bash
+smbclient -L IP
+```
 
-`smbclient -L IP`
+CONNECTING TO A SHARE
 
-`smbcleint //IP/SHARE_NAME`
+```bash
+smbcleint //IP/SHARE_NAME
+```
 
-## Using netexec
+### NETEXEC
 
-`netexec smb IP -u 'user' -p 'pass' --shares`
+LISTING ALL THE USERS WITHOUT CREDS
 
-`netexec smb IP -u 'user' -p 'pass' --users`
+```bash
+netexec smb IP -u '.' -p '' --rid-brute
+```
 
-`netexec smb IP -u 'user' -p 'pass' --groups`
+LISTING ALL THE USERS WITH CREDS
 
-`netexec smb IP -u 'user' -p 'pass' --loggedon-users`
+```bash
+netexec smb IP -u 'user' -p 'password' --users
+```
 
-`netexec smb IP -u 'user' -p 'pass' -M spider_plus --share 'Share_name' `
+LISTING ALL THE SHARES
 
-## Using Smbmap
+```bash
+netexec smb IP -u 'user' -p 'password' --shares
+```
 
-`smbmap -H IP`
+LISTING ALL GROUPS
 
-`smbmap -u user -p password -d doamain.local -H IP -R 'SHARE_NAME' --dir-only `
+```bash
+netexec smb IP -u 'user' -p 'password' --groups
+```
 
+GETTING ALL THE LOGGEDON USERS
 
-## Using crackmapexec
+```bash
+netexec smb IP -u 'user' -p 'password' --loggedon-users
+```
 
-`crackmapexec smb IP -u 'user' -p 'pass' --shares`
+SPIDERING A SHARE
 
-`crackmapexec smb IP -u 'user' -p 'pass' --users`
+```bash
+netexec smb IP -u 'user' -p 'password' -M spider_plus --share 'SHARE_NAME'
+```
 
-`crackmapexec smb IP -u 'user' -p 'pass' --groups`
+GETTING THE PASSWORD POLICY
 
-`crackmapexec smb IP -u 'user' -p 'pass' --loggedon-users`
+```bash
+crackmapexec smb IP -u user -p Password123 --pass-pol
+```
 
-`crackmapexec smb IP -u 'user' -p 'pass' -M spider_plus --share 'Share_name' `
+### USING RPCCLIENT
 
-## Using rpcclient
+```bash
+rpcclient -U "" -N IP
 
-`rpcclient -U "" -N 172.16.5.5` 
+getdominfo-getting domain info
+getdompwinfo- getting domain password info
+getdomuser-getting the domian users
+srvinfo-server information
+```
 
+### USING SMBMAP
+
+CHECKING HOST
+
+```bash
+smbmap -H IP
+```
+
+LISTING ALL THE DIRECTORY OF A SHARE
+
+```bash
+smbmap -u 'user' -p 'password' -d domain.local -H IP -R 'SHARE_NAME' --dir-only
+```
