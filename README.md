@@ -1,5 +1,6 @@
 # OSCP-Resources
 # HACKTHEBOX
+Below is the todo list of machines from hackthebox
 ## LINUX
 
 - [ ]  Sea
